@@ -177,7 +177,7 @@ def execute_function(function):
     parser = construct_parser(function)
     parsed_arguments = parser.parse_args()
 
-    args, kwargs = extract_function_arguments(parsed_arguments)
+    _, args, kwargs = extract_function_arguments(parsed_arguments)
     return function(*args, **kwargs)
 
 

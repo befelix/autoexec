@@ -9,6 +9,7 @@ setup(
     author="Felix Berkenkamp",
     author_email="fberkenkamp@gmail.com",
     description=("Automatically turn functions into executables."),
+    url = 'https://github.com/befelix/autoexec',
     license="MIT",
     packages=['autoexec'],
     install_requires=requirements,
