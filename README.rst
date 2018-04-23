@@ -7,6 +7,12 @@ Whenever you have written some code and want to run it on a cluster, the first s
 
 This script automates this process, using information about types provided either through function annotation, default values in keyword arguments, or type information in `numpydoc`-style docstrings. Like any shell script, this limits the functions to arguments that can be passed in the terminal, (str, int, float,...).
 
+Installation
+------------
+You can install the library with
+
+``pip install autoexec``
+
 Example
 -------
 
