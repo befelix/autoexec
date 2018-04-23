@@ -1,11 +1,14 @@
-# autoexec
+autoexec
+========
+
 Automatically turn python functions into executable scripts
 
 Whenever you have written some code and want to run it on a cluster, the first step is to turn it into an executable. This typically leads to a quick stop over at the docs for `argparse`, together with a lot of duplicated effort in reproducing the function signature. This can be error-prone and annoying, especially if one edits the function.
 
 This script automates this process, using information about types provided either through function annotation, default values in keyword arguments, or type information in `numpydoc`-style docstrings. Like any shell script, this limits the functions to arguments that can be passed in the terminal, (str, int, float,...).
 
-### Example
+Example
+-------
 
 Let's say you've written the following function in `example.py`, which provides all kinds of different type information.
 ```
