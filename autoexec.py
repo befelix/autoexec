@@ -3,6 +3,10 @@ import inspect
 from numpydoc.docscrape import FunctionDoc
 
 
+__all__ = ['construct_parser', 'extract_function_arguments', 'execute_function',
+           'execute_functions']
+
+
 def construct_parser(function, parser=None):
     """Automatically construct an argument parser from the function signature and docstring.
 
@@ -213,44 +217,3 @@ def execute_functions(functions):
     fun, args, kwargs = extract_function_arguments(parsed_arguments)
 
     return fun(*args, **kwargs)
-
-
-def add(a: int, b, c=5, d=7., e=None):
-    """Some cool addition.
-
-    It's super complicated.
-    You know, adding and stuff.
-
-    Parameters
-    ----------
-    a : int
-        This is the first complicated parameter
-        super complicated
-    b : int, optional
-    e : int, optional
-    """
-    print(e)
-    return a + b + c + int(d)
-
-
-def subtract(a: int, b, c=5, d=7., e=None):
-    """Some cool addition.
-
-    It's super complicated.
-    You know, adding and stuff.
-
-    Parameters
-    ----------
-    a : int
-        This is the first complicated parameter
-        super complicated
-    b : int, optional
-    e : int, optional
-    """
-    print(e)
-    return a + b + c + int(d)
-
-
-if __name__ == '__main__':
-    print(execute_functions([add, subtract]))
-    # print(execute_function(add))
