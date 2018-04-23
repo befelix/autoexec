@@ -22,7 +22,7 @@ Let's say you've written the following function in ``example.py``, which provide
 
         Parameters
         ----------
-        b : int, optional
+        b : int
             This is the second complicated parameter
             super complicated
         e : int, optional
@@ -30,7 +30,7 @@ Let's say you've written the following function in ``example.py``, which provide
         if e is None:
             e = 0
         return a + b + c + d + e
- 
+
 Now all you have to do to turn this into an executable is add the following code at the bottom
 
 .. code:: python
@@ -39,7 +39,7 @@ Now all you have to do to turn this into an executable is add the following code
         import autoexec
         res = autoexec.execute_function(add)
         print(res)
-        
+
 and run ``chmod +x example.py``. Now if you run ``./example.py --help`` you get the following output
 
 .. code::
@@ -60,7 +60,7 @@ and run ``chmod +x example.py``. Now if you run ``./example.py --help`` you get 
       --c C       int, default: 5
       --d D       float, default: 7.0
       --e E       int, default: None
-      
+
 And you're ready to call the script from the command line
 
 .. code::
@@ -72,10 +72,10 @@ There is type-checking by argparse
 
 .. code::
 
-    ❯❯❯ ./example.py --a 1 --b stringy 
+    ❯❯❯ ./example.py --a 1 --b stringy
     usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
     example.py: error: argument --b: invalid int value: 'stringy'
-    
+
 and it complains about missing arguments
 
 .. code::

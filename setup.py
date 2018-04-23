@@ -1,15 +1,22 @@
 from setuptools import setup
+from os import path
 
-with open('requirements.txt', 'r') as f:
+current_dir = path.abspath(path.dirname(__file__))
+
+with open(path.join(current_dir, 'README.rst'), 'r') as f:
+    long_description = f.read()
+
+with open(path.join(current_dir, 'requirements.txt'), 'r') as f:
     requirements = f.read().split('\n')
 
 setup(
     name="autoexec",
-    version="0.0.1",
+    version="0.1.1",
     author="Felix Berkenkamp",
     author_email="fberkenkamp@gmail.com",
     description=("Automatically turn functions into executables."),
-    url = 'https://github.com/befelix/autoexec',
+    long_description=long_description,
+    url='https://github.com/befelix/autoexec',
     license="MIT",
     packages=['autoexec'],
     install_requires=requirements,

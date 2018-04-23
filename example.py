@@ -9,7 +9,7 @@ def add(a: int, b, c=5, d=7., e=None):
 
     Parameters
     ----------
-    b : int, optional
+    b : int
         This is the second complicated parameter
         super complicated
     e : int, optional
