@@ -10,74 +10,78 @@ This script automates this process, using information about types provided eithe
 Example
 -------
 
-Let's say you've written the following function in `example.py`, which provides all kinds of different type information.
-```
-def add(a: int, b, c=5, d=7., e=None):
+Let's say you've written the following function in ``example.py``, which provides all kinds of different type information
+
+.. code:: python
+
+    def add(a: int, b, c=5, d=7., e=None):
     """Some cool addition.
+
+        It's super complicated.
+        You know, adding and stuff.
+
+        Parameters
+        ----------
+        b : int, optional
+            This is the second complicated parameter
+            super complicated
+        e : int, optional
+        """
+        if e is None:
+            e = 0
+        return a + b + c + d + e
+ 
+Now all you have to do to turn this into an executable is add the following code at the bottom
+
+.. code:: python
+
+    if __name__ == '__main__':
+        import autoexec
+        res = autoexec.execute_function(add)
+        print(res)
+        
+and run ``chmod +x example.py``. Now if you run ``./example.py --help`` you get the following output
+
+.. code::
+
+    ❯❯❯ ./example.py --help
+    usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
+
+    Some cool addition.
 
     It's super complicated.
     You know, adding and stuff.
 
-    Parameters
-    ----------
-    b : int, optional
-        This is the second complicated parameter
-        super complicated
-    e : int, optional
-    """
-    if e is None:
-        e = 0
-    return a + b + c + d + e
- ```
- 
- Now all you have to do to turn this into an executable is add the following code at the bottom
- ```
- if __name__ == '__main__':
-     import autoexec
-     res = autoexec.execute_function(add)
-     print(res)
- ```
- and run `chmod +x example.py`.
- 
- Now if you run
- `./example.py --help`
- you get the following output
- ```
-❯❯❯ ./example.py --help
-usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
+    optional arguments:
+      -h, --help  show this help message and exit
+      --a A       int
+      --b B       This is the second complicated parameter
+                  super complicated
+      --c C       int, default: 5
+      --d D       float, default: 7.0
+      --e E       int, default: None
+      
+And you're ready to call the script from the command line
 
-Some cool addition.
+.. code::
 
-It's super complicated.
-You know, adding and stuff.
-
-optional arguments:
-  -h, --help  show this help message and exit
-  --a A       int
-  --b B       This is the second complicated parameter
-              super complicated
-  --c C       int, default: 5
-  --d D       float, default: 7.0
-  --e E       int, default: None
-```
- 
- And you're ready to call the script from the command line
- ```
- ./example.py --a 1 --b 2 --c 3
-13.0
-```
+    ❯❯❯ ./example.py --a 1 --b 2 --c 3
+    13.0
 
 There is type-checking by argparse
-```
-❯❯❯ ./example.py --a 1 --b stringy 
-usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
-example.py: error: argument --b: invalid int value: 'stringy'
-```
-and it complains about missing arguments
-```
-./example.py --a 1
-usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
-example.py: error: the following arguments are required: --b
-```
 
-There is also support for multiple functions via `autoexec.execute_functions`.
+.. code::
+
+    ❯❯❯ ./example.py --a 1 --b stringy 
+    usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
+    example.py: error: argument --b: invalid int value: 'stringy'
+    
+and it complains about missing arguments
+
+.. code::
+
+    ❯❯❯ ./example.py --a 1
+    usage: example.py [-h] --a A --b B [--c C] [--d D] [--e E]
+    example.py: error: the following arguments are required: --b
+
+There is also support for multiple functions via ``autoexec.execute_functions``.
